@@ -74,7 +74,7 @@
                       value="1"
                     />
                     <button
-                      onclick="casehandler(true)"
+                      onclick="productChange('case')"
                       id="caseIncrease"
                       class="btn btn-default"
                     >
@@ -133,23 +133,23 @@
         //       document.getElementById("phoneTotal").innerText = "$" + phoneTotal;
         //     });
 
-        function phonehandler(isIncrease) {
-          const phoneInput = document.getElementById("phoneCount");
-          const phoneCount = parseInt(phoneInput.value);
-          //const phoneNewCount = isIncrease ? phoneCount + 1 : phoneCount - 1;
-          let phoneNewCount = phoneCount;
-          if (isIncrease == true) {
-            phoneNewCount = phoneCount + 1;
-          }
+        // function phonehandler(isIncrease) {
+        //   const phoneInput = document.getElementById("phoneCount");
+        //   const phoneCount = parseInt(phoneInput.value);
+        //   //const phoneNewCount = isIncrease ? phoneCount + 1 : phoneCount - 1;
+        //   let phoneNewCount = phoneCount;
+        //   if (isIncrease == true) {
+        //     phoneNewCount = phoneCount + 1;
+        //   }
 
-          if (isIncrease == false && phoneCount > 0) {
-            phoneNewCount = phoneCount - 1;
-          }
+        //   if (isIncrease == false && phoneCount > 0) {
+        //     phoneNewCount = phoneCount - 1;
+        //   }
 
-          phoneInput.value = phoneNewCount;
-          var phoneTotal = phoneNewCount * 1219;
-          document.getElementById("phoneTotal").innerText = "$" + phoneTotal;
-        }
+        //   phoneInput.value = phoneNewCount;
+        //   var phoneTotal = phoneNewCount * 1219;
+        //   document.getElementById("phoneTotal").innerText = "$" + phoneTotal;
+        // }
 
         //     document.getElementById("caseDecrease").addEventListener("click", function () {
         //       const caseInput = document.getElementById("caseCount");
@@ -176,25 +176,47 @@
         //       casehandler(true);
         //     });
 
-        document
-          .getElementById("caseDecrease")
-          .addEventListener("click", function () {
-            casehandler(false);
-          });
-        function casehandler(isIncrease) {
-          const caseInput = document.getElementById("caseCount");
-          const caseCount = parseInt(caseInput.value);
-          let caseNewCount = caseCount;
-          //const caseNewCount = isIncrease ? caseCount + 1 : caseCount - 1;
+        // document
+        //   .getElementById("caseDecrease")
+        //   .addEventListener("click", function () {
+        //     casehandler(false);
+        //   });
+        // function casehandler(isIncrease) {
+        //   const caseInput = document.getElementById("caseCount");
+        //   const caseCount = parseInt(caseInput.value);
+        //   let caseNewCount = caseCount;
+        //   //const caseNewCount = isIncrease ? caseCount + 1 : caseCount - 1;
+        //   if (isIncrease == true) {
+        //     caseNewCount = caseCount + 1;
+        //   }
+        //   if (isIncrease == false && caseNewCount > 0) {
+        //     caseNewCount = caseCount - 1;
+        //   }
+        //   caseInput.value = caseNewCount;
+        //   const caseTotal = caseNewCount * 59;
+        //   document.getElementById("caseTotal").innerText = "$" + caseTotal;
+        // }
+
+        function productChange(product, isIncrease) {
+          const productInput = document.getElementById(product + "-Count");
+          const productCount = parseInt(productInput.value);
+          let productNewCount = productCount;
           if (isIncrease == true) {
-            caseNewCount = caseCount + 1;
+            productNewCount = productCount + 1;
           }
-          if (isIncrease == false && caseNewCount > 0) {
-            caseNewCount = caseCount - 1;
+          if (isIncrease == false && productNewCount > 0) {
+            productNewCount = productCount - 1;
           }
-          caseInput.value = caseNewCount;
-          const caseTotal = caseNewCount * 59;
-          document.getElementById("caseTotal").innerText = "$" + caseTotal;
+          productInput.value = productNewCount;
+          
+          let productTotal = 0;
+          if (product == "phone") {
+            productTotal = productNewCount * 1219;
+          } else if (product == "case") {
+            productTotal = productNewCount * 59;
+          }
+          document.getElementById(product + "-Total").innerText =
+            "$" + productTotal;
         }
       </script>
     </section>
